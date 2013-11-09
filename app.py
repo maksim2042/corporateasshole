@@ -13,6 +13,7 @@ import pudb
 
 import pymongo
 
+from conf import MONGO_URI
 
 app = Flask(__name__)
 
@@ -27,7 +28,7 @@ def create_app(configfile=None):
 
 
 
-db=pymongo.MongoClient(mongo_uri).corp_ahole
+db=pymongo.MongoClient(MONGO_URI).corp_ahole
 
 from index import *
 
