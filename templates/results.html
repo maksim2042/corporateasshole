@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+	        <div class="span12">
+	    		<ul class="thumbnails">
+		
+		
+					{% for company in companies %}
+	                <li class="span12 clearfix">
+	                  <div class="thumbnail clearfix">
+	                    <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+	                    <div class="caption" class="pull-left">
+	                      <h4>      
+	                      <a href="#" > {{ company.get('company_name') }}</a>
+	                      </h4>
+							<div>
+	                      <small><b>DUNS: </b><br>
+							{% for duns in company.get('db_numbers') %}
+								<span class="label label-info">{{ duns }}</span>
+							{% endfor %}
+		   				  </small>
+							</div>
+		
+			  				<div class="span8">
+							  <h5>@$$hole Breakdown</h5>
+							  <strong>Environmental Record</strong><span class="pull-right">30%</span>
+							  <div class="progress progress-danger active">
+							      <div class="bar" style="width: 30%;"></div>
+							  </div>
+							  <strong>Labor Relations</strong><span class="pull-right">40%</span>
+							  <div class="progress progress-info active">
+							      <div class="bar" style="width: 40%;"></div>
+							  </div>
+							  <strong>Legal Problems</strong><span class="pull-right">10%</span>
+							  <div class="progress progress-striped active">
+							      <div class="bar" style="width: 10%;"></div>
+							  </div>
+							  <p>
+							      <a href="#" class="btn btn-large btn-success">Vote</a>
+							    <a href="#" class="pull-right">View detailed results</a>
+							  </p>
+							</div>
+	                    </div>
+	                  </div>
+	                </li>
+					{% else %}
+					<h3>Couldn't find anything, try something else?</h3>
+					{% endfor %}
+					
+
+
+	            </ul>
+	        </div>
+		</div>
+	</div>
+
+{% endblock %}
