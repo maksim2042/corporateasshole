@@ -11,6 +11,8 @@ from flask import Flask, render_template, request, abort, g, json, session, redi
 import requests
 
 from app import app, db
+from imagesearch import get_image
+
 
 import pudb
 
@@ -23,4 +25,4 @@ def index():
 def search():
     terms = request.form.get('search')
     companies = list(db.ca.find({'company_name':terms}))
-    return(render_template("results.html", companies = companies))
+    return(render_template("results.html", companies = companies, get_image=get_image))
