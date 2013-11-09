@@ -16,7 +16,7 @@ Steps:  Run auth first, store return value of auth method in a token.
 
 #this mehtod makes a post_request with the user_id and password.
 def auth():
-    header_params = {'x-dnb-user':'nmuralid@masonlive.gmu.edu','x-dnb-pwd':'theMUZAK43@43'}
+    header_params = {'x-dnb-user':'Hackathon2@dnb.com','x-dnb-pwd':'Hackathon123'}
     url = 'https://maxcvservices.dnb.com/rest/Authentication'
     r = requests.post(url,headers=header_params)
     auth_token=''
@@ -129,6 +129,23 @@ product_codes_public_records_service = {'Suits':'PUBREC_SUITS',
  #works except for Filings. Need to figure out query URL for Filings product.                                    
 def publicRecordService(duns,product_id,auth_token,version=3.0):
     url='https://maxcvservices.dnb.com/V3.0'+'/organizations/'+str(duns)+'/products/'+product_id
+    r = requests.get(url,headers={'Authorization':auth_token})
+    assert r.status_code==200,"Invalid duns or product_id"
+    return json.loads(r.content)
+
+
+
+product_codes_sbri_service = {'Small Business Risk Insight - Standard':'SBRI_STD','Small Business Risk Insight - Enhanced':'SBRI_ENH'}
+def SBRIService(duns,product_id,auth_token,version='3.2',subject_id=None):
+    url = 'https://maxcvservices.dnb.com/V{version}/organizations/'+str(duns)+'/products/'+product_id
+    r = requests.get(url,headers={'Authorization':auth_token})
+    assert r.status_code==200,"Invalid duns or product_id"
+    return json.loads(r.content)
+
+
+
+def getCompaniesBypostalCode(auth_token,postalcode,countryCode='US',radiusSearchCountryCode='US',searchModeDescription='Advanced'):
+    url = 'https://maxcvservices.dnb.com/V4.0/organizations?findcompany=true&RadiusSearchPostalCode-1='+str(postalcode)+'&CountryISOAlpha2Code-1='+str(countryCode)+'&RadiusSearchCountryISOAlpha2Code-1='+str(radiusSearchCountryCode)+'&SearchModeDescription='+str(searchModeDescription)
     r = requests.get(url,headers={'Authorization':auth_token})
     assert r.status_code==200,"Invalid duns or product_id"
     return json.loads(r.content)
