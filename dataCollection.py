@@ -13,6 +13,10 @@ Steps:  Run auth first, store return value of auth method in a token.
                     'Assessment Product Service':{'@version':3.0,'Small Business company & Owner Risk Profile':'SBCRP','Predictive Bankruptcy Risk - D&B Financial Stress Score (FSS)':'PBR_FSS_V7.1','Predictive Payment Risk - D&B Commercial Credit Score (CCS)':'PPR_CCS_V9','D&B Rating & Trend':'RTNG_TRND','Predictive Bankruptcy & Payment Risk - Standard':'PBPR_STD','Predictive Bankruptcy & Payment Risk - Enhanced':'PBPR_ENH','Predictive Global Payment Risk -  D&B Emergine Market Mediation Alert Score (EMMA)':'PGPR_EMMA','D&B Supplier Evaluation Risk Rating':'SER','D&B Total Loss Predictor':'TLP','D&B Viability Rating':'VIAB_RAT'},
                     ''}
     token = auth()"""
+    
+
+
+
 
 #this mehtod makes a post_request with the user_id and password.
 def auth():
