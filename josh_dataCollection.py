@@ -39,7 +39,35 @@ def findcompany(company,auth_token=token,version=4.0):
             print name,duns,employees
     return result
 
+
+def findcompanyDunsList(company,auth_token=token,version=4.0):
+    
+    array_of_DUNS_Codes = []
+    
+    url = 'https://maxcvservices.dnb.com/V'+str(version)+'/organizations'
+    r = requests.get(url,headers={
+        'Authorization':auth_token
+       },
+        params={
+        'OrganizationName':company,'findcompanycleansematch':True,"includeTopExecutives":True,
+        'findcompany':True
+        }
+    )
+    assert r.status_code==200,"Invalid duns or product_id"
+    #if successful it returns a string which we convert into a dict which we return.
+    result = json.loads(r.content)
+    response = result['FindCompanyResponse']['FindCompanyResponseDetail']['FindCandidate']
+    for val in response:
+        if 'ConsolidatedEmployeeDetails' in val:
+            employees = val['ConsolidatedEmployeeDetails']['TotalEmployeeQuantity']
+            duns = val['DUNSNumber']
+            name = val['OrganizationPrimaryName']['OrganizationName']['$']
+            #print name,duns,employees
+            array_of_DUNS_Codes.append(duns)
+            
+    return array_of_DUNS_Codes
+
 if __name__ == '__main__':
     print "getting company"
-    r = findcompany('chevron')
-    print "done"
+    r = findcompanyDunsList('chevron')
+    print r
