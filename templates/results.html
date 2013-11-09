@@ -10,7 +10,7 @@
 					{% for company in companies %}
 	                <li class="span12 clearfix">
 	                  <div class="thumbnail clearfix">
-	                    <img src="http://placehold.it/320x200" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
+	                    <img src="{{ get_image('company '+company.get('company_name'))}}" alt="ALT NAME" class="pull-left span2 clearfix" style='margin-right:10px'>
 	                    <div class="caption" class="pull-left">
 	                      <h4>      
 	                      <a href="#" > {{ company.get('company_name') }}</a>
