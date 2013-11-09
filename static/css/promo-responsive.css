@@ -1,0 +1,128 @@
+@media (max-width: 979px) {
+	.back-top-wrapper {
+		display: none;
+	}
+	.navbar .navbar-inner {
+		height: auto;
+	}
+	.navbar .navbar-inner .top-nav {
+		float: none;
+	}	
+	.navbar .navbar-inner .nav {
+		margin-top: 5px;
+		border-top: 1px solid #ccc;
+		margin-right: 0;
+	}
+	.navbar .navbar-inner .nav li {
+		margin-bottom: 1px;
+	}
+	.navbar .navbar-inner .nav li a{
+		background-color: #eee;
+		border: none !important;
+		font-family: 'HelveticaNeueLight';
+		font-weight: normal;
+		text-shadow: none;
+		-webkit-transition: background 0.3s ease;
+		-moz-transition: 	background 0.3s ease;
+		-o-transition: 		background 0.3s ease;
+		transition: 		background 0.3s ease;	
+	}
+	.navbar .navbar-inner .nav li.active a{
+		background-color: #55AAA1;
+		border-left: 2pc solid #f60;
+		color: #fff;
+		text-shadow: none;
+	}
+	.navbar .navbar-inner .top-nav .active a:hover,
+	.navbar .navbar-inner .top-nav a:hover {
+		background-color: #71CBC1;
+		color: #fff;
+		text-shadow: none;
+		-webkit-transition: background 0.3s ease;
+		-moz-transition: 	background 0.3s ease;
+		-o-transition: 		background 0.3s ease;
+		transition: 		background 0.3s ease;			
+	}	
+	.phones-wrapper .container .phones {
+		padding-right: 0px;
+		padding-top: 65px;
+	}
+	.promo .top h1 {
+		line-height: 26px;
+		font-size: 22px;
+	}
+	.promo .top p {
+		font-size: 16px;
+		line-height: 20px;
+	}	
+}
+
+@media (max-width: 767px) {
+	#wrap {
+		margin: 0 auto -210px;
+	}
+	#push {
+		height: 210px;
+	}
+	body,
+	.navbar-inner {
+		padding-left: 10px;
+		padding-right: 10px;		
+	}
+	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+		margin-left: -10px;
+		margin-right: -10px;
+	}	
+	.navbar .container {
+		width: auto;
+	}	
+	.promo .top {
+		background: #71cbc1;
+		padding: 20px;
+		height: auto;
+		min-height: 0;
+	}
+	.promo .top h1 {
+		padding-top: 0;
+	}
+	.content .engage .span3 {
+		width: 46%;
+		margin: 10px 2% 20px;
+		float: left;
+	}
+	.content .title {
+		font-size: 20px;
+		line-height: 24px;
+		margin: 20px;
+	}
+	.content .motivation .motivation-items p {
+		margin-bottom: 30px;
+	}
+	.content .motivation,
+	.content .engage {
+		padding-bottom: 0;
+	}
+	.navbar .container .nav li a {
+		padding: 10px 10px 8px;
+	}
+	footer {
+		padding: 30px 0 20px;
+		border-top: 1px dashed #7c7c7c;
+	}
+	footer .bottom-nav li {
+		margin-right: 2%;
+	}
+	footer .bottom-nav li a {
+		font-size: 14px;
+	}
+	footer p {
+		font-size: 12px;
+	}
+	footer .social {
+		margin-bottom: 15px;
+	}
+	.content article {
+		font-size: 16px;
+		line-height: 20px;
+	}
+}
