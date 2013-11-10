@@ -25,4 +25,11 @@ def index():
 def search():
     terms = request.form.get('search')
     companies = list(db.ca.find({'company_name':terms}))
+    companies = db.command('text', 'ca', search=terms)['results']
+    
+    for company in companies:
+        company.update(company['obj'])
+        epa_results = db.command('text','epa', search=company['company_name'])
+        company['epa_citations'] = epa_results['stats']['nscanned']
+    
     return(render_template("results.html", companies = companies, get_image=get_image))
