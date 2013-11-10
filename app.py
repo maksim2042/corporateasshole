@@ -34,4 +34,4 @@ from index import *
 
 if __name__ == '__main__':
     host='0.0.0.0'
-    app=create_app().run(debug=True, host=host, port=8000)
+    app=create_app().run(debug=False, host=host, port=8000)

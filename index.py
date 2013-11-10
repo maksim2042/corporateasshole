@@ -31,5 +31,7 @@ def search():
         company.update(company['obj'])
         epa_results = db.command('text','epa', search=company['company_name'])
         company['epa_citations'] = epa_results['stats']['nscanned']
+        company['epa_rating'] = (float(company['epa_citations'])/1000)
+        print company['epa_citations'], company['epa_rating']
     
     return(render_template("results.html", companies = companies, get_image=get_image))
