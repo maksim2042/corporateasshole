@@ -154,3 +154,33 @@ def getCompaniesBypostalCode(auth_token,postalcode,countryCode='US',radiusSearch
     assert r.status_code==200,"Invalid duns or product_id"
     return json.loads(r.content)
 
+
+def getLienData(dunsnum):
+    """
+    Returns a dict with the DUNSNumber as an index with keys 
+    'Liens' (the nunber of liens) and 
+    'LienValue' (the aggregate value of liens(if identified in the data))
+    If there is no data, the function returns a dict with 0 for each value.
+    """
+    liens_val = 0
+    liens_ct = 0
+    
+    # co_prd = publicRecordService('878051556', 'PUBREC_DTLS', token)
+    try:
+        co_prd = publicRecordService(dunsnum, 'PUBREC_DTLS', token)
+        liens = co_prd['OrderProductResponse']['OrderProductResponseDetail']['Product']['Organization']['Events']['LegalEvents']['LienInformation']['Lien']
+     
+        liens_ct = len(co_prd['OrderProductResponse']['OrderProductResponseDetail']['Product']['Organization']['Events']['LegalEvents']['LienInformation']['Lien'])
+
+        for i in range(liens_ct):
+            try:
+                liens_val += liens[i]['FilingAmount']['$']
+            except:
+                liens_val += 0
+                continue
+
+    except:
+        liens_ct = 0
+        liens_val = 0
+
+    return {dunsnum:{'Liens':liens_ct, 'LienValue':liens_val}}
